@@ -30,17 +30,7 @@
 
 - (void) relayoutviews {
     
-    CGFloat width = SCREEN_WIDTH / 5;
-    CGFloat height = 49;
-    //创建selectedImageView，选中状态图片
-    _selectedImageView.frame = CGRectMake(0, height/6, width, height/2);
     
-    //创建buttonImageView，未选中状态图片
-    _buttonImageView.frame  = CGRectMake(0,height/6, width, height/2);
-    
-    //创建buttonLabel，按钮图片下方文字
-    _buttonLabel.frame = CGRectMake(0, height*4/6, width, height*2/6);
-
 }
 
 //创建按钮子视图

@@ -105,13 +105,23 @@ static float RightTimes = 0.5;
 @implementation RedRoseGameVC
 
 -(BOOL) shouldAutorotate{
-    return NO;
+    return YES;
 }
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return  UIDeviceOrientationLandscapeRight;
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    //    return UIInterfaceOrientationMaskLandscapeLeft;
+    return UIInterfaceOrientationMaskLandscapeRight;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationLandscapeRight;
+    //    return UIInterfaceOrientationPortrait;
+}
 
 - (void)creatMp3:(NSString *)str
 {

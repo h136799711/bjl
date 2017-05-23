@@ -48,6 +48,11 @@
 
 #pragma mark --
 
+-(void) viewDidAppear:(BOOL)animated{
+
+    [_webView reload];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createTabBar];
@@ -66,31 +71,50 @@
     NSLog(@"deviceOrientationDidChange:%ld", (long)[UIDevice currentDevice].orientation);
     if([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait) {
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
-        
+        [self portraitViews];
         NSLog(@"UIDeviceOrientationPortrait");
         
         //注意： UIDeviceOrientationLandscapeLeft 与 UIInterfaceOrientationLandscapeRight
     } else if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft) {
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
         NSLog(@"UIDeviceOrientationLandscapeLeft");
+        [self landscapeViews];
     } else if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) {
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
         NSLog(@"UIDeviceOrientationLandscapeRight");
+        [self landscapeViews];
     }else if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortraitUpsideDown) {
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
         NSLog(@"UIDeviceOrientationPortraitUpsideDown");
+        [self portraitViews];
     }
     
     NSLog(@"SCREEN_WIDTH= %f,SCREEN_HEIGHT = %f",SCREEN_WIDTH,SCREEN_HEIGHT);
     
     
+    
+}
+
+// 横屏
+-(void) landscapeViews{
+    _tabBarView.hidden = YES;
+    [self.view setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    // 竖屏
+    _bgScroller.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [_webView setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+}
+
+// 竖屏
+-(void) portraitViews{
+    _tabBarView.hidden = NO;
     [_tabBarView setFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
     [self.view setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     // 竖屏
     _bgScroller.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
     _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49);
     [_webView setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49)];
-//    ByTabBarButton
+    //    ByTabBarButton
     CGFloat width = SCREEN_WIDTH / 5;
     NSLog(@"底部菜单宽度%f",width);
     int j =0 ;
@@ -98,12 +122,11 @@
         ByTabBarButton * btn  = (ByTabBarButton *) _tabBarView.subviews[i];
         if(btn != nil && [btn isKindOfClass:[ByTabBarButton class]]){
             
-            [btn setBounds:CGRectMake(0, 0, width, 49)];
-            [btn setFrame:CGRectMake(j * width, 0, width, 49)];
+            [btn setBounds:CGRectMake(0, 0, 64, 49)];
+            [btn setFrame:CGRectMake((j) * width - width/3, 0, width, 49)];
             j++;
         }
     }
-    
 }
 
 #pragma mark -- 创建视图
@@ -182,7 +205,7 @@
     [_bgScroller insertSubview:backgroundView atIndex:0];
     
     _notesLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 20)];
-    _notesLable.text = @"***";
+    _notesLable.text = @"";
     _notesLable.textAlignment = NSTextAlignmentCenter;
     _notesLable.textColor = [UIColor grayColor];
     _notesLable.backgroundColor = [UIColor clearColor];
@@ -288,8 +311,15 @@
     }
     // 退出
     else{
-       NSLog(@"退出");
-        exit(0);
+        NSLog(@"退出");
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"是否退出应用？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+            exit(0);
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
     
     // 上一次选中的按钮状态改为no
