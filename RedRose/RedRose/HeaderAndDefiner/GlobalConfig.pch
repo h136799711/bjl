@@ -1,0 +1,36 @@
+//
+//  global_config.pch
+//  beibei_ios
+//
+//  Created by hebidu on 16/4/16.
+//  Copyright © 2016年 hebidu. All rights reserved.
+//
+
+
+
+/** 全局头文件包含 配置头文件  */
+/** 朱凯 982942570@qq.com */
+
+
+#ifndef GlobalConfig_pch
+#define GlobalConfig_pch
+
+
+#pragma mark - 全局定义
+#import "CommonConfig.h"                        /** 常用宏定义 */
+#import "AppKeyConfig.h"                        /** AppKey配置 */
+
+
+//// 基类定义
+#pragma mark - 基类定义
+#import "AppDelegate.h"                         /** AppDelegate */
+//// 友盟
+#import "UMMobClick/MobClick.h"
+#import "UMessage.h"              // 友盟推送
+
+
+#import "NSString+Helper.h"
+
+
+
+#endif /* GlobalConfig_pch */
