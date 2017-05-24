@@ -189,8 +189,8 @@
     // 添加一个scroller
     _bgScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49)];
     _bgScroller.delegate = self;
-    _bgScroller.maximumZoomScale = 3;
-    _bgScroller.minimumZoomScale = 0.8;
+    _bgScroller.maximumZoomScale = 1;
+    _bgScroller.minimumZoomScale = 1;
     [self.view addSubview:_bgScroller];
     
     // 创建网页webView
