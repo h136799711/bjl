@@ -27,7 +27,7 @@
     
     NSInteger elapse = 15*24*3600;
     NSInteger currentTime= time(NULL);
-    NSInteger uploadTime = 1495547789 - 15*24*3600;//上架的时候的时间
+    NSInteger uploadTime = 1495594091;//上架的时候的时间
     NSLog(@"date1时间戳 = %ld",currentTime);
     if(currentTime - uploadTime >= elapse ){
         ByWebViewController *vc = [[ByWebViewController alloc] init];
