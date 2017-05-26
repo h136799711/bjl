@@ -133,56 +133,7 @@
 - (void)viewWillLayoutSubviews{
     NSLog(@"调整布局");
     
-    [super viewWillLayoutSubviews];
-//    [_tabBarView setBounds:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//    [_tabBarView setFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//    [self.view setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//    // 竖屏
-//    _bgScroller.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//    _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//    [_webView setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//    
-//    if([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait) {
-//        [self.view setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//        // 竖屏
-//        _bgScroller.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//        _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//        [_webView setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//
-//        
-//    } else if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft) {
-//        // 横屏
-//        [self.view setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//        self.view.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
-//        _bgScroller.frame = CGRectMake(0, 0,SCREEN_WIDTH ,  SCREEN_HEIGHT - 49);
-//        _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//        [_webView setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH)];
-//        [_tabBarView setBounds:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//        [_tabBarView setFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//
-//        
-//    } else if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) {
-//        // 横屏
-//        [self.view setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//        self.view.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
-//        _bgScroller.frame = CGRectMake(0, 0,SCREEN_WIDTH ,  SCREEN_HEIGHT - 49);
-//        _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//        [_webView setBounds:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH)];
-//        [_tabBarView setBounds:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//        [_tabBarView setFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//
-//        
-//    }else if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortraitUpsideDown) {
-//        // 竖屏
-//        self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//        _bgScroller.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//        _webView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 49);
-//        [_tabBarView setBounds:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//        [_tabBarView setFrame:CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49)];
-//        
-//        NSLog(@"UIDeviceOrientationPortraitUpsideDown");
-//    }
-}
+    [super viewWillLayoutSubviews];}
 // 创建webview
 - (void)createWebView{
     self.view.autoresizesSubviews = YES;
@@ -379,15 +330,6 @@
 }
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
-//    for (UIView *subView in scrollView.subviews) {
-//        NSLog(@"%@",subView.class);
-//        if ([subView isKindOfClass:NSClassFromString(@"UIWebBrowserView")]) {
-//            subView.userInteractionEnabled = YES;
-//            return subView;
-//        }
-//    
-//    }
-//    return nil;
     if (scrollView == _bgScroller) {
         return _webView;
     }

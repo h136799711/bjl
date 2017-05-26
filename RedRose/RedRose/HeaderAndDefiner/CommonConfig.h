@@ -42,12 +42,9 @@
 
 
 //接口地址定义
-//#define BOYE_API_URL  @"http://api.moodwo.com/public/index.php"
 
 #define BOYE_CLIENT_ID @"by565fa4e56a9241"
 #define BOYE_CLIENT_SECRET @"c37725a62af42ea0569d79b1942935be"
-
-#define BOYE_BASE_URL @"https://api.ryzcgf.com/public/index.php"
 
 /** 接口地址 */
 #define BOYE_API_URL          [NSString stringWithFormat:@"%@", BOYE_BASE_URL]
@@ -103,10 +100,6 @@
 // 屏幕 宽度、高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
-
-//----------------------web页-----------------
-//#define WEB_APP_URL  @"http://www.moodwo.com/index.php/Webview"
-//#define WEB_PUB_URL  @"http://www.moodwo.com/Public/html"
 
 
 // 常用
